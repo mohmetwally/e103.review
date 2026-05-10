@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Notebook Style Quiz</title>
+<title>E103 Review</title>
 
-<!-- NOTEBOOK FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,10 +16,10 @@ body{
     margin:0;
     padding:0;
     background:#f2f2f2;
-    font-family:'Caveat', cursive;
+    font-family:'Comic Neue', cursive;
 }
 
-/* EACH QUESTION PAGE */
+/* PAGE */
 .page{
     width:100%;
     height:100vh;
@@ -27,38 +28,37 @@ body{
     align-items:center;
 }
 
-/* QUESTION CARD */
+/* CARD */
 .card{
     width:90%;
     max-width:750px;
     background:white;
-    padding:45px;
+    padding:40px;
     border-radius:25px;
     box-shadow:0 5px 15px rgba(0,0,0,.15);
 }
 
 /* QUESTION NUMBER */
 .number{
-    font-size:26px;
-    color:#777;
-    margin-bottom:10px;
+    font-size:24px;
+    color:#666;
+    margin-bottom:15px;
 }
 
 /* QUESTION */
 .question{
-    font-size:40px;
-    line-height:1.5;
+    font-size:34px;
+    line-height:1.6;
     margin-bottom:30px;
-    letter-spacing:1px;
 }
 
 /* OPTIONS */
 .option{
-    background:#f8f8f8;
+    background:#f7f7f7;
     padding:18px;
     margin:14px 0;
-    border-radius:18px;
-    font-size:34px;
+    border-radius:16px;
+    font-size:28px;
     cursor:pointer;
     transition:.3s;
 }
@@ -68,26 +68,27 @@ body{
     transform:scale(1.02);
 }
 
-/* CORRECT / WRONG */
+/* CORRECT */
 .correct{
     background:#b8ffbf !important;
 }
 
+/* WRONG */
 .wrong{
     background:#ffb8b8 !important;
 }
 
-/* NEXT BUTTON */
+/* BUTTON */
 .next{
-    margin-top:25px;
-    padding:14px 30px;
+    margin-top:20px;
+    padding:14px 28px;
     border:none;
     border-radius:15px;
     background:#222;
     color:white;
-    font-size:28px;
+    font-size:26px;
     cursor:pointer;
-    font-family:'Caveat', cursive;
+    font-family:'Comic Neue', cursive;
 }
 
 .next:hover{
@@ -151,6 +152,64 @@ Let's go and say hello.
 </div>
 
 <button class="next" onclick="nextQuestion(2)">
+Next
+</button>
+
+</div>
+</section>
+
+<!-- QUESTION 3 -->
+<section class="page" style="display:none;">
+
+<div class="card">
+
+<div class="number">
+Question 3
+</div>
+
+<div class="question">
+A: Hello. I'm a new student here.<br>
+B: ________
+</div>
+
+<div class="option" onclick="check(this,false)">
+Thanks.
+</div>
+
+<div class="option" onclick="check(this,true)">
+Welcome.
+</div>
+
+<button class="next" onclick="nextQuestion(3)">
+Next
+</button>
+
+</div>
+</section>
+
+<!-- QUESTION 4 -->
+<section class="page" style="display:none;">
+
+<div class="card">
+
+<div class="number">
+Question 4
+</div>
+
+<div class="question">
+A: I'm sorry. What's your name again?<br>
+B: ________
+</div>
+
+<div class="option" onclick="check(this,false)">
+P-A-R-K.
+</div>
+
+<div class="option" onclick="check(this,true)">
+Eun-ha Park.
+</div>
+
+<button class="next" onclick="nextQuestion(4)">
 Next
 </button>
 
