@@ -1,265 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>E103 Review</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
-
 body{
     margin:0;
-    padding:40px 0;
+    min-height:100vh;
     font-family:'Comic Neue', cursive;
-
-    /* NOTEBOOK BACKGROUND */
-    background-color:#fdfdfd;
-
+    background-color:#fffdf7;
     background-image:
-    linear-gradient(to bottom,
-    transparent 31px,
-    #b6dfff 32px),
-
-    linear-gradient(to right,
-    transparent 80px,
-    #ffb3b3 81px,
-    #ffb3b3 83px,
-    transparent 84px);
-
+        linear-gradient(to bottom, transparent 31px, #b9e3ff 32px),
+        linear-gradient(to right, transparent 75px, #ffb1b1 76px, #ffb1b1 78px, transparent 79px);
     background-size:100% 32px;
 }
 
-/* PAGE */
-
-.page{
+.wrapper{
     width:100%;
+    min-height:100vh;
     display:flex;
     justify-content:center;
-    margin-bottom:40px;
+    align-items:center;
+    padding:30px 0;
 }
-
-/* CARD */
 
 .card{
-    width:85%;
+    width:84%;
     max-width:850px;
-
-    background:white;
-
+    background:rgba(255,255,255,.96);
     border:5px solid red;
-
     border-radius:25px;
-
     padding:35px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
 }
-
-/* QUESTION NUMBER */
 
 .number{
     color:red;
-    font-size:26px;
-    margin-bottom:20px;
+    font-size:28px;
     font-weight:bold;
+    margin-bottom:20px;
 }
-
-/* QUESTION */
 
 .question{
     font-size:34px;
-    line-height:1.7;
-    margin-bottom:30px;
+    line-height:1.6;
+    margin-bottom:25px;
 }
 
-/* OPTIONS */
-
 .option{
-
     background:#fafafa;
-
-    border:2px solid #e2e2e2;
-
+    border:2px solid #e1e1e1;
     border-radius:15px;
-
-    padding:16px 22px;
-
-    margin:15px 0;
-
+    padding:15px 22px;
+    margin:14px 0;
     font-size:28px;
-
     cursor:pointer;
-
-    transition:.3s;
+    transition:.2s;
 }
 
 .option:hover{
     background:#eef7ff;
-    transform:scale(1.01);
 }
-
-/* ANSWERS */
 
 .correct{
     background:#b8ffbf !important;
+    border-color:#18a558 !important;
 }
 
 .wrong{
     background:#ffb8b8 !important;
+    border-color:#d10000 !important;
 }
 
-/* BUTTON */
-
-.next{
-
-    background:red;
-
-    color:white;
-
-    border:none;
-
-    padding:14px 28px;
-
-    border-radius:15px;
-
-    font-size:26px;
-
-    cursor:pointer;
-
+.controls{
     margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-    float:right;
-
+button{
+    background:red;
+    color:white;
+    border:none;
+    padding:13px 28px;
+    border-radius:14px;
+    font-size:26px;
+    cursor:pointer;
     font-family:'Comic Neue', cursive;
 }
 
-.next:hover{
+button:hover{
     background:#cc0000;
 }
 
+.score{
+    font-size:24px;
+    color:#333;
+}
+
+@media(max-width:600px){
+    .card{width:82%; padding:25px;}
+    .question{font-size:28px;}
+    .option{font-size:24px;}
+}
 </style>
 </head>
 
 <body>
 
-<!-- QUESTION 1 -->
+<div class="wrapper">
+    <div class="card">
+        <div class="number" id="number"></div>
+        <div class="question" id="question"></div>
+        <div id="options"></div>
 
-<section class="page">
-
-<div class="card">
-
-<div class="number">
-Question 1
+        <div class="controls">
+            <button onclick="prevQuestion()">Back</button>
+            <div class="score" id="score"></div>
+            <button onclick="nextQuestion()">Next ></button>
+        </div>
+    </div>
 </div>
-
-<div class="question">
-A: Hi, I'm Diane.<br>
-B: __________
-</div>
-
-<div class="option" onclick="check(this,true)">
-• Oh, hi. I'm Peter.
-</div>
-
-<div class="option" onclick="check(this,false)">
-• What do people call you?
-</div>
-
-<button class="next">
-Next >
-</button>
-
-</div>
-
-</section>
-
-<!-- QUESTION 2 -->
-
-<section class="page">
-
-<div class="card">
-
-<div class="number">
-Question 2
-</div>
-
-<div class="question">
-A: My name is Bill.<br>
-B: __________
-</div>
-
-<div class="option" onclick="check(this,true)">
-• Nice to meet you, Bill.
-</div>
-
-<div class="option" onclick="check(this,false)">
-• Let's go and say hello.
-</div>
-
-<button class="next">
-Next >
-</button>
-
-</div>
-
-</section>
-
-<!-- QUESTION 3 -->
-
-<section class="page">
-
-<div class="card">
-
-<div class="number">
-Question 3
-</div>
-
-<div class="question">
-A: Hello. I'm a new student here.<br>
-B: __________
-</div>
-
-<div class="option" onclick="check(this,false)">
-• Thanks.
-</div>
-
-<div class="option" onclick="check(this,true)">
-• Welcome.
-</div>
-
-<button class="next">
-Next >
-</button>
-
-</div>
-
-</section>
 
 <script>
+const questions = [
+{
+q:"A: Hi, I'm Diane.<br>B: __________",
+options:["Oh, hi. I'm Peter.","What do people call you?"],
+answer:0
+},
+{
+q:"A: My name is Bill.<br>B: __________",
+options:["Nice to meet you, Bill.","Let's go and say hello."],
+answer:0
+},
+{
+q:"A: Hello. I'm a new student here.<br>B: __________",
+options:["Thanks.","Welcome."],
+answer:1
+},
+{
+q:"A: I'm sorry. What's your name again?<br>B: __________",
+options:["P-A-R-K.","Eun-ha Park."],
+answer:1
+},
+{
+q:"A: How do you spell your first name?<br>B: __________",
+options:["I'm Akira.","A-K-I-R-A"],
+answer:1
+},
+{
+q:"A: What do people call you?<br>B: __________",
+options:["It's Angela Young.","Everyone calls me Angie."],
+answer:1
+},
+{
+q:"That's Antonio. __________ is in my class.",
+options:["He","His"],
+answer:0
+},
+{
+q:"She is a tour guide. She __________ people on tours.",
+options:["answers","takes","writes"],
+answer:1
+},
+{
+q:"He __________ to bed after midnight.",
+options:["does","goes","starts"],
+answer:1
+},
+{
+q:"He __________ up early in the morning.",
+options:["answers","gets","starts"],
+answer:1
+},
+{
+q:"What __________ your sister do?",
+options:["does","goes","serves"],
+answer:0
+},
+{
+q:"He __________ work at 8:00 A.M.",
+options:["answers","serves","starts"],
+answer:2
+},
+{
+q:"My brother works in a bookstore. He __________ books and magazines.",
+options:["answers","sells","works"],
+answer:1
+},
+{
+q:"That restaurant __________ good food.",
+options:["serves","takes","writes"],
+answer:0
+},
+{
+q:"He __________ his school work on his new computer.",
+options:["serves","does","works"],
+answer:1
+},
+{
+q:"He __________ about 30 emails a day.",
+options:["serves","takes","writes"],
+answer:2
+},
+{
+q:"He is a receptionist. He __________ the phone and greets people.",
+options:["answers","sells","works"],
+answer:0
+},
+{
+q:"He __________ in a restaurant.",
+options:["does","takes","works"],
+answer:2
+},
+{
+q:"A: What do you think of \"The Voice\"?<br>B: __________",
+options:["How about you?","I'm not a real fan of the show."],
+answer:1
+},
+{
+q:"A: Do you like jazz music?<br>B: __________",
+options:["I can't stand it.","I can't stand them."],
+answer:0
+},
+{
+q:"A: There's a soccer game tonight.<br>B: __________",
+options:["Thanks. I'd love to.","Great. Let's go."],
+answer:1
+},
+{
+q:"A: Would you like to see a movie this weekend?<br>B: __________",
+options:["That sounds great!","I don't agree."],
+answer:0
+},
+{
+q:"A: Do you like pop music?<br>B: Yes, I do. __________ it a lot.",
+options:["I like","I’d like"],
+answer:0
+},
+{
+q:"A: There's a baseball game on TV tonight. __________ to come over and watch it?<br>B: I’d like to, but I have to study tonight.",
+options:["Do you like","Would you like"],
+answer:1
+},
+{
+q:"A: Do you like baseball?<br>B: Yes, __________. I love it!",
+options:["I do","I would"],
+answer:0
+},
+{
+q:"A: I like those earrings.<br>B: Do you mean __________?",
+options:["that gold","those gold","the gold ones"],
+answer:2
+},
+{
+q:"A: Can you go to dinner with me tomorrow?<br>B: No, I’m sorry. I work __________ Saturdays.",
+options:["in","on","at"],
+answer:1
+},
+{
+q:"A: Which shirt do you prefer?<br>B: I prefer the blue one. It’s __________ the orange one.",
+options:["the nice","nicer","nicer than"],
+answer:2
+},
+{
+q:"A: Would you like to take a walk?<br>B: Yes, __________",
+options:["I do","I’d like","I’d love to"],
+answer:2
+},
+{
+q:"Louisa answers the phone and greets visitors to the office. She’s a __________.",
+options:["cashier","receptionist","flight attendant"],
+answer:1
+},
+{
+q:"A: Which camera do you like?<br>B: I like __________",
+options:["this small","the one","the small one"],
+answer:2
+},
+{
+q:"A: When do you usually go to bed?<br>B: __________ midnight.",
+options:["In","At","On"],
+answer:1
+},
+{
+q:"A: Is the ring expensive?<br>B: Yes, but it’s __________ the necklace.",
+options:["the cheap","cheaper","cheaper than"],
+answer:2
+},
+{
+q:"A: __________ you like to go out to dinner tonight?<br>B: I’m sorry. I can’t.",
+options:["Do","Would","Are"],
+answer:1
+},
+{
+q:"I really like those __________ socks.",
+options:["cotton","plastic","leather"],
+answer:0
+},
+{
+q:"Your __________ tie is beautiful.",
+options:["plastic","silk","rubber"],
+answer:1
+},
+{
+q:"This __________ necklace is perfect for me. But it’s $3,000!",
+options:["gold","cotton","wool"],
+answer:0
+},
+{
+q:"How much is __________ watch? I can’t find a price tag.",
+options:["this","that","these","those"],
+answer:0
+},
+{
+q:"Look at __________ black jeans over there! Aren’t they stylish?",
+options:["this","that","these","those"],
+answer:3
+},
+{
+q:"I like __________ gold earrings. They look great on me!",
+options:["this","that","these","those"],
+answer:2
+},
+{
+q:"Excuse me. I like __________ scarf. Can I see it, please?",
+options:["this","that","these","those"],
+answer:0
+},
+{
+q:"Jared does __________ every morning before breakfast.",
+options:["yoga","football","jogging"],
+answer:0
+},
+{
+q:"How often do you __________ swimming in the summer?",
+options:["go","do","play"],
+answer:0
+},
+{
+q:"I sometimes play __________ with my friends.",
+options:["karate","aerobics","baseball"],
+answer:2
+},
+{
+q:"A: How __________ do you work out?<br>B: Every day. I’m a real fitness freak.",
+options:["often","good","well"],
+answer:0
+},
+{
+q:"A: How __________ do you play tennis?<br>B: About average. But I’m getting better and better!",
+options:["often","good","well"],
+answer:2
+},
+{
+q:"A: How __________ do you spend at the gym?<br>B: Just thirty minutes a day.",
+options:["often","long","good"],
+answer:1
+},
+{
+q:"A: How __________ are you at soccer?<br>B: OK, I guess.",
+options:["often","good","well"],
+answer:1
+},
+{
+q:"What time do you go swimming __________ the morning?",
+options:["around","in","on"],
+answer:1
+},
+{
+q:"I always go swimming __________ 7:00.",
+options:["at","for","on"],
+answer:0
+},
+{
+q:"I usually go swimming __________ noon.",
+options:["around","in","with"],
+answer:0
+},
+{
+q:"I swim __________ about 30 minutes.",
+options:["at","for","until"],
+answer:1
+},
+{
+q:"Do you also play sports __________ your free time?",
+options:["at","in","until"],
+answer:1
+},
+{
+q:"I usually go out __________ my classmates.",
+options:["around","for","with"],
+answer:2
+},
+{
+q:"I go to the gym __________ Mondays and Wednesdays.",
+options:["at","on","until"],
+answer:1
+},
+{
+q:"Sometimes I go jogging __________ weekends.",
+options:["for","in","on"],
+answer:2
+},
+{
+q:"A: How often do you play golf, Monica?<br>B: __________",
+options:["I guess I'm OK.","Once a week.","About an hour."],
+answer:1
+},
+{
+q:"A: How long do you spend on the golf course?<br>B: __________",
+options:["About four hours.","About average.","About three miles."],
+answer:0
+},
+{
+q:"A: And how well do you play?<br>B: __________",
+options:["I'm not very well.","I almost never do.","I'm about average."],
+answer:2
+},
+{
+q:"A: How good are you at other sports?<br>B: __________",
+options:["Not very good, actually.","I sometimes play twice a week.","Pretty well, I guess."],
+answer:0
+},
+{
+q:"A: Excuse me. Is there a bank near here?<br>B: Yes, there is. There’s __________ around the corner.",
+options:["any","one","some"],
+answer:1
+},
+{
+q:"Are there __________ drugstores in this neighborhood?",
+options:["few","many","much"],
+answer:1
+},
+{
+q:"A: Is there much public transportation near here?<br>B: No, there isn’t __________ public transportation in this town.",
+options:["any","one","none"],
+answer:0
+},
+{
+q:"We __________ a trip to Egypt last summer.",
+options:["took","made","did"],
+answer:0
+},
+{
+q:"My brothers __________ at home all weekend.",
+options:["went dancing","played video games","took a bike ride"],
+answer:1
+},
+{
+q:"I worked really hard in Germany last week. I was __________ there.",
+options:["in my car","on business","on vacation"],
+answer:1
+},
+{
+q:"I'm sorry I was late. I had to __________ a phone call.",
+options:["did","made","make"],
+answer:2
+},
+{
+q:"I stayed home last night and __________ the laundry.",
+options:["did","went","made"],
+answer:0
+},
+{
+q:"I'm going to the grocery store to get some __________.",
+options:["clothes","gas","food"],
+answer:2
+},
+{
+q:"We're taking a long drive. We need to stop at the __________.",
+options:["laundromat","gas station","drugstore"],
+answer:1
+},
+{
+q:"I live on the 8th floor of my __________.",
+options:["apartment building","neighborhood","theater"],
+answer:0
+},
+{
+q:"Our apartment is in the center of the city. We live __________.",
+options:["downtown","in the neighborhood","in the suburbs"],
+answer:0
+}
+];
 
-function check(element, correct){
+let currentQuestion = 0;
+let score = 0;
+let answered = new Array(questions.length).fill(false);
 
-let options =
-element.parentElement.querySelectorAll('.option');
+function loadQuestion(){
+    const q = questions[currentQuestion];
 
-options.forEach(opt=>{
-opt.style.pointerEvents='none';
-});
+    document.getElementById("number").innerHTML =
+    "Question " + (currentQuestion + 1) + " / " + questions.length;
 
-if(correct){
-element.classList.add('correct');
-}else{
-element.classList.add('wrong');
+    document.getElementById("question").innerHTML = q.q;
+
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach((option, index)=>{
+        const div = document.createElement("div");
+        div.className = "option";
+        div.innerHTML = "• " + option;
+        div.onclick = function(){
+            checkAnswer(div, index);
+        };
+        optionsDiv.appendChild(div);
+    });
+
+    document.getElementById("score").innerHTML =
+    "Score: " + score;
 }
 
+function checkAnswer(element, index){
+    if(answered[currentQuestion]) return;
+
+    answered[currentQuestion] = true;
+
+    const correctIndex = questions[currentQuestion].answer;
+    const options = document.querySelectorAll(".option");
+
+    if(index === correctIndex){
+        element.classList.add("correct");
+        score++;
+    }else{
+        element.classList.add("wrong");
+        options[correctIndex].classList.add("correct");
+    }
+
+    document.getElementById("score").innerHTML =
+    "Score: " + score;
 }
 
+function nextQuestion(){
+    if(currentQuestion < questions.length - 1){
+        currentQuestion++;
+        loadQuestion();
+    }else{
+        showResult();
+    }
+}
+
+function prevQuestion(){
+    if(currentQuestion > 0){
+        currentQuestion--;
+        loadQuestion();
+    }
+}
+
+function showResult(){
+    document.querySelector(".card").innerHTML =
+    "<div class='number'>Finished!</div>" +
+    "<div class='question'>Your score is:<br><br>" +
+    score + " / " + questions.length +
+    "</div>" +
+    "<button onclick='location.reload()'>Restart</button>";
+}
+
+loadQuestion();
 </script>
 
 </body>
-
 </html>
