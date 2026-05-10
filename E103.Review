@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notebook Style Quiz</title>
+
+<!-- NOTEBOOK FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    background:#f2f2f2;
+    font-family:'Caveat', cursive;
+}
+
+/* EACH QUESTION PAGE */
+.page{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* QUESTION CARD */
+.card{
+    width:90%;
+    max-width:750px;
+    background:white;
+    padding:45px;
+    border-radius:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+/* QUESTION NUMBER */
+.number{
+    font-size:26px;
+    color:#777;
+    margin-bottom:10px;
+}
+
+/* QUESTION */
+.question{
+    font-size:40px;
+    line-height:1.5;
+    margin-bottom:30px;
+    letter-spacing:1px;
+}
+
+/* OPTIONS */
+.option{
+    background:#f8f8f8;
+    padding:18px;
+    margin:14px 0;
+    border-radius:18px;
+    font-size:34px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.option:hover{
+    background:#dfefff;
+    transform:scale(1.02);
+}
+
+/* CORRECT / WRONG */
+.correct{
+    background:#b8ffbf !important;
+}
+
+.wrong{
+    background:#ffb8b8 !important;
+}
+
+/* NEXT BUTTON */
+.next{
+    margin-top:25px;
+    padding:14px 30px;
+    border:none;
+    border-radius:15px;
+    background:#222;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+    font-family:'Caveat', cursive;
+}
+
+.next:hover{
+    background:#444;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- QUESTION 1 -->
+<section class="page">
+
+<div class="card">
+
+<div class="number">
+Question 1
+</div>
+
+<div class="question">
+A: Hi, I'm Diane.<br>
+B: ________
+</div>
+
+<div class="option" onclick="check(this,true)">
+Oh, hi. I'm Peter.
+</div>
+
+<div class="option" onclick="check(this,false)">
+What do people call you?
+</div>
+
+<button class="next" onclick="nextQuestion(1)">
+Next
+</button>
+
+</div>
+</section>
+
+<!-- QUESTION 2 -->
+<section class="page" style="display:none;">
+
+<div class="card">
+
+<div class="number">
+Question 2
+</div>
+
+<div class="question">
+A: My name is Bill.<br>
+B: ________
+</div>
+
+<div class="option" onclick="check(this,true)">
+Nice to meet you, Bill.
+</div>
+
+<div class="option" onclick="check(this,false)">
+Let's go and say hello.
+</div>
+
+<button class="next" onclick="nextQuestion(2)">
+Next
+</button>
+
+</div>
+</section>
+
+<script>
+
+function check(element, correct){
+
+    let options =
+    element.parentElement.querySelectorAll('.option');
+
+    options.forEach(opt=>{
+        opt.style.pointerEvents='none';
+    });
+
+    if(correct){
+        element.classList.add('correct');
+    }else{
+        element.classList.add('wrong');
+    }
+}
+
+function nextQuestion(current){
+
+    const pages =
+    document.querySelectorAll('.page');
+
+    pages[current-1].style.display='none';
+
+    if(pages[current]){
+        pages[current].style.display='flex';
+        window.scrollTo(0,0);
+    }
+}
+
+</script>
+
+</body>
+</html>
