@@ -7,92 +7,138 @@
 
 <title>E103 Review</title>
 
-<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
 
 body{
     margin:0;
-    padding:0;
-    background:#f2f2f2;
+    padding:40px 0;
     font-family:'Comic Neue', cursive;
+
+    /* NOTEBOOK BACKGROUND */
+    background-color:#fdfdfd;
+
+    background-image:
+    linear-gradient(to bottom,
+    transparent 31px,
+    #b6dfff 32px),
+
+    linear-gradient(to right,
+    transparent 80px,
+    #ffb3b3 81px,
+    #ffb3b3 83px,
+    transparent 84px);
+
+    background-size:100% 32px;
 }
 
 /* PAGE */
+
 .page{
     width:100%;
-    height:100vh;
     display:flex;
     justify-content:center;
-    align-items:center;
+    margin-bottom:40px;
 }
 
 /* CARD */
+
 .card{
-    width:90%;
-    max-width:750px;
+    width:85%;
+    max-width:850px;
+
     background:white;
-    padding:40px;
+
+    border:5px solid red;
+
     border-radius:25px;
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+    padding:35px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
 
 /* QUESTION NUMBER */
+
 .number{
-    font-size:24px;
-    color:#666;
-    margin-bottom:15px;
+    color:red;
+    font-size:26px;
+    margin-bottom:20px;
+    font-weight:bold;
 }
 
 /* QUESTION */
+
 .question{
     font-size:34px;
-    line-height:1.6;
+    line-height:1.7;
     margin-bottom:30px;
 }
 
 /* OPTIONS */
+
 .option{
-    background:#f7f7f7;
-    padding:18px;
-    margin:14px 0;
-    border-radius:16px;
+
+    background:#fafafa;
+
+    border:2px solid #e2e2e2;
+
+    border-radius:15px;
+
+    padding:16px 22px;
+
+    margin:15px 0;
+
     font-size:28px;
+
     cursor:pointer;
+
     transition:.3s;
 }
 
 .option:hover{
-    background:#dfefff;
-    transform:scale(1.02);
+    background:#eef7ff;
+    transform:scale(1.01);
 }
 
-/* CORRECT */
+/* ANSWERS */
+
 .correct{
     background:#b8ffbf !important;
 }
 
-/* WRONG */
 .wrong{
     background:#ffb8b8 !important;
 }
 
 /* BUTTON */
+
 .next{
-    margin-top:20px;
-    padding:14px 28px;
-    border:none;
-    border-radius:15px;
-    background:#222;
+
+    background:red;
+
     color:white;
+
+    border:none;
+
+    padding:14px 28px;
+
+    border-radius:15px;
+
     font-size:26px;
+
     cursor:pointer;
+
+    margin-top:25px;
+
+    float:right;
+
     font-family:'Comic Neue', cursive;
 }
 
 .next:hover{
-    background:#444;
+    background:#cc0000;
 }
 
 </style>
@@ -101,6 +147,7 @@ body{
 <body>
 
 <!-- QUESTION 1 -->
+
 <section class="page">
 
 <div class="card">
@@ -111,26 +158,28 @@ Question 1
 
 <div class="question">
 A: Hi, I'm Diane.<br>
-B: ________
+B: __________
 </div>
 
 <div class="option" onclick="check(this,true)">
-Oh, hi. I'm Peter.
+• Oh, hi. I'm Peter.
 </div>
 
 <div class="option" onclick="check(this,false)">
-What do people call you?
+• What do people call you?
 </div>
 
-<button class="next" onclick="nextQuestion(1)">
-Next
+<button class="next">
+Next >
 </button>
 
 </div>
+
 </section>
 
 <!-- QUESTION 2 -->
-<section class="page" style="display:none;">
+
+<section class="page">
 
 <div class="card">
 
@@ -140,26 +189,28 @@ Question 2
 
 <div class="question">
 A: My name is Bill.<br>
-B: ________
+B: __________
 </div>
 
 <div class="option" onclick="check(this,true)">
-Nice to meet you, Bill.
+• Nice to meet you, Bill.
 </div>
 
 <div class="option" onclick="check(this,false)">
-Let's go and say hello.
+• Let's go and say hello.
 </div>
 
-<button class="next" onclick="nextQuestion(2)">
-Next
+<button class="next">
+Next >
 </button>
 
 </div>
+
 </section>
 
 <!-- QUESTION 3 -->
-<section class="page" style="display:none;">
+
+<section class="page">
 
 <div class="card">
 
@@ -169,85 +220,46 @@ Question 3
 
 <div class="question">
 A: Hello. I'm a new student here.<br>
-B: ________
+B: __________
 </div>
 
 <div class="option" onclick="check(this,false)">
-Thanks.
+• Thanks.
 </div>
 
 <div class="option" onclick="check(this,true)">
-Welcome.
+• Welcome.
 </div>
 
-<button class="next" onclick="nextQuestion(3)">
-Next
+<button class="next">
+Next >
 </button>
 
 </div>
-</section>
 
-<!-- QUESTION 4 -->
-<section class="page" style="display:none;">
-
-<div class="card">
-
-<div class="number">
-Question 4
-</div>
-
-<div class="question">
-A: I'm sorry. What's your name again?<br>
-B: ________
-</div>
-
-<div class="option" onclick="check(this,false)">
-P-A-R-K.
-</div>
-
-<div class="option" onclick="check(this,true)">
-Eun-ha Park.
-</div>
-
-<button class="next" onclick="nextQuestion(4)">
-Next
-</button>
-
-</div>
 </section>
 
 <script>
 
 function check(element, correct){
 
-    let options =
-    element.parentElement.querySelectorAll('.option');
+let options =
+element.parentElement.querySelectorAll('.option');
 
-    options.forEach(opt=>{
-        opt.style.pointerEvents='none';
-    });
+options.forEach(opt=>{
+opt.style.pointerEvents='none';
+});
 
-    if(correct){
-        element.classList.add('correct');
-    }else{
-        element.classList.add('wrong');
-    }
+if(correct){
+element.classList.add('correct');
+}else{
+element.classList.add('wrong');
 }
 
-function nextQuestion(current){
-
-    const pages =
-    document.querySelectorAll('.page');
-
-    pages[current-1].style.display='none';
-
-    if(pages[current]){
-        pages[current].style.display='flex';
-        window.scrollTo(0,0);
-    }
 }
 
 </script>
 
 </body>
+
 </html>
